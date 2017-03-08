@@ -36,33 +36,33 @@
 
     $('#sendReview').click(function(){
       if ($(this).data('count')) {
-        $(this).data('count', 0);
+        $(this).data('count', false);
 
       }
       else { // first click
-        $(this).data('count', 1); // initialize the count
+        $(this).data('count', true); // initialize the count
       }
       $('#getReview').val($(this).data('count'));
     });
 
     $('#sendDeveloper').click(function(){
       if ($(this).data('count')) {
-        $(this).data('count', 0);
+        $(this).data('count', false);
 
       }
       else { // first click
-        $(this).data('count', 1); // initialize the count
+        $(this).data('count', true); // initialize the count
       }
       $('#getDeveloper').val($(this).data('count'));
     });
 
     $('#sendPaid').click(function(){
       if ($(this).data('count')) {
-        $(this).data('count', 0);
+        $(this).data('count', false);
 
       }
       else { // first click
-        $(this).data('count', 1); // initialize the count
+        $(this).data('count', true); // initialize the count
       }
       $('#getPaid').val($(this).data('count'));
     });
@@ -134,7 +134,7 @@
 
         User Reviews
 
-        <div id="sendReview" class="toggle active">
+        <div id="sendReview" class="toggle">
           <div class="toggle-handle"></div>
         </div>
 
@@ -186,7 +186,7 @@
   Verified Developer
 
 
-  <div id="sendDeveloper" class="toggle active">
+  <div id="sendDeveloper" class="toggle">
     <div class="toggle-handle"></div>
   </div>
 
@@ -196,7 +196,7 @@
   Paid Application
 
 
-  <div id="sendPaid" class="toggle active">
+  <div id="sendPaid" class="toggle">
     <div class="toggle-handle"></div>
   </div>
 
@@ -209,9 +209,9 @@
 
 </div>
 
-<input type="text" id="getReview" name="reviews" value="0">
-<input type="text" id="getDeveloper" name="verifiedDeveloper" value="0">
-<input type="text" id="getPaid" name="paid" value="0">
+<input type="text" id="getReview" name="reviews" value="false">
+<input type="text" id="getDeveloper" name="verifiedDeveloper" value="false">
+<input type="text" id="getPaid" name="paid" value="false">
 
 
 

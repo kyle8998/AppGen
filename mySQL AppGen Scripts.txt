@@ -1,0 +1,71 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema appgen
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema appgen
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `appgen` DEFAULT CHARACTER SET utf8 ;
+USE `appgen` ;
+
+-- -----------------------------------------------------
+-- Table `appgen`.`application_list`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `appgen`.`application_list` (
+  `id_application` INT(11) NOT NULL AUTO_INCREMENT,
+  `name_application` VARCHAR(45) NULL DEFAULT NULL,
+  `name_applicationStore` VARCHAR(45) NULL DEFAULT NULL,
+  `userReviews_application` VARCHAR(45) NULL DEFAULT NULL,
+  `rating_application` DECIMAL(2,1) NULL DEFAULT NULL,
+  `downloadCount_application` VARCHAR(45) NULL DEFAULT NULL,
+  `verifiedDeveloper_application` VARCHAR(45) NULL DEFAULT NULL,
+  `paidApp_application` VARCHAR(45) NULL DEFAULT NULL,
+  `camera_permission_SM` VARCHAR(45) NULL DEFAULT NULL,
+  `contacts_permission_SM` VARCHAR(45) NULL DEFAULT NULL,
+  `microphone_permission_SM` VARCHAR(45) NULL DEFAULT NULL,
+  `location_permission_SM` VARCHAR(45) NULL DEFAULT NULL,
+  `fitness_permission_SM` VARCHAR(45) NULL DEFAULT NULL,
+  `calendar_permission_SM` VARCHAR(45) NULL DEFAULT NULL,
+  `sms_permission_SM` VARCHAR(45) NULL DEFAULT NULL,
+  `storage_permission_SM` VARCHAR(45) NULL DEFAULT NULL,
+  `camera_permission_bank` VARCHAR(45) NULL DEFAULT NULL,
+  `contacts_permission_bank` VARCHAR(45) NULL DEFAULT NULL,
+  `microphone_permission_bank` VARCHAR(45) NULL DEFAULT NULL,
+  `location_permission_bank` VARCHAR(45) NULL DEFAULT NULL,
+  `fitness_permission_bank` VARCHAR(45) NULL DEFAULT NULL,
+  `calendar_permission_bank` VARCHAR(45) NULL DEFAULT NULL,
+  `sms_permission_bank` VARCHAR(45) NULL DEFAULT NULL,
+  `storage_permission_bank` VARCHAR(45) NULL DEFAULT NULL,
+  `ranking_application` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_application`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 25
+DEFAULT CHARACTER SET = utf8
+COMMENT = 'Application Attributes';
+
+
+-- -----------------------------------------------------
+-- Table `appgen`.`application_store`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `appgen`.`application_store` (
+  `id_ApplicationStore` INT(11) NOT NULL AUTO_INCREMENT,
+  `name_ApplicationStore` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_ApplicationStore`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 41
+DEFAULT CHARACTER SET = utf8
+COMMENT = 'Table of application store names and IDs.';
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
