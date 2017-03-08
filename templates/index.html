@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AppGen</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="static/css/ratchet.min.css">
+    <link rel="stylesheet" href="static/css/ratchet-theme-ios.min.css">
+    <link rel="stylesheet" href="static/css/app.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="static/js/ratchet.min.js"></script>
+
+<!-- Progress Bar Animation -->
+<style>
+@keyframes width {
+       0%, 100% {
+       transition-timing-function: cubic-bezier(1, 0, 0.65, 0.85);
+  }
+  0% {
+       width: 0%;
+  }
+   100% {
+      width: 10%;
+  }
+}
+</style>
+
+
+
+  </head>
+  <body>
+    <header class="bar bar-nav">
+      <!-- <a class="icon icon-refresh pull-right"></a> -->
+      <h1 class="title">AppGen</h1>
+      <br>
+      <br>
+
+<!-- Progres Bar -->
+      <div class="container">
+        <div class="progress">
+          <div class="progress-bar">
+          </div>
+        </div>
+      </div>
+
+      </div>
+      <div class="divBox">
+
+        <h2>Enter the Name of your Application Store</h2>
+
+        <form method="POST" action="/home/">
+          <input type="text" placeholder="AppStore Name eg: Abe's Store" name="storename"><br>
+          <input type="submit" idname="submit" class="submit" value="Next">
+        </form>
+
+
+      </div>
+      <div style="text-align:center">
+      <!--  <div style="width:500px;height:2000px;border:1px solid #000; text-align:center">
+          Enter the Name of your Application Store
+        </div>
+        <br>
+        <br>
+        <br>
+        <h2>Enter the Name of your Application Store</h2> -->
+      </div>
+    </header>
+
+    <!--
+    <header class="bar bar-nav">
+    <div style="text-align:center">
+      <h2>Enter the Name of your Application Store</h2>
+    </div>
+    </header>
+    <div class="content"> -->
+
+<!-- <div style="width:100px;height:500px;border:1px solid #000;">This is a rectangle!</div> -->
+
+  </body>
+</html>

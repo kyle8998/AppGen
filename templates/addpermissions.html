@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AppGen</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/ratchet.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/ratchet-theme-ios.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/app.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <script src="{{ url_for('static',filename='js/ratchet.min.js') }}"></script>
+
+
+    <!-- Progress Bar Animation -->
+    <style>
+    @keyframes width {
+           0%, 100% {
+           transition-timing-function: cubic-bezier(1, 0, 0.65, 0.85);
+      }
+      0% {
+           width: 60%;
+      }
+       100% {
+          width: 70%;
+      }
+    }
+    </style>
+
+
+  </head>
+  <body>
+    <header class="bar bar-nav">
+        <a href="addpermissionslist.html" data-transition="slide-out">
+  <button class="btn btn-link btn-nav pull-left" onClick="location='/addpermissionslist/'">
+    <span class="icon icon-left-nav"></span>
+    Back
+
+  </button>
+    </a>
+  <h1 class="title">AppGen</h1>
+
+
+      <!-- Progress Bar -->
+            <div class="containerlower">
+              <div class="progress">
+                <div class="progress-bar">
+
+                </div>
+              </div>
+            </div>
+  </header>
+
+    <div class="content">
+<br>
+
+      <p>Add Permissions - Application #</p>
+      <br>
+      <div class="compactLeft">
+      <p>Download Count: # - #</p>
+      <p>Ratings: #/5 </p>
+      <p>Not a Certified Developer</p>
+      </div>
+      <div class="compactRight">
+      <p>User Reviews: Present</p>
+      <p>Free Application</p>
+      </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+      <div class="compactLeft">
+      <p>Select Permissions:<p>
+      </div>
+
+<br>
+<br>
+      <ul class="table-view">
+        <li class="table-view-cell">
+
+            Camera
+            <p></p>
+            <div class="toggle active">
+              <div class="toggle-handle"></div>
+            </div>
+
+        </li>
+        <li class="table-view-cell">
+
+            Contacts
+            <p></p>
+            <div class="toggle active">
+              <div class="toggle-handle"></div>
+            </div>
+        </li>
+        <li class="table-view-cell">
+            Microphone
+            <p></p>
+            <div class="toggle active">
+              <div class="toggle-handle"></div>
+            </div>
+        </li>
+        <li class="table-view-cell">
+            Location
+            <p></p>
+            <div class="toggle active">
+              <div class="toggle-handle"></div>
+            </div>
+        </li>
+        <li class="table-view-cell">
+            Fitness
+            <p></p>
+            <div class="toggle active">
+              <div class="toggle-handle"></div>
+            </div>
+        </li>
+        <li class="table-view-cell">
+            Calendar
+            <p></p>
+            <div class="toggle active">
+              <div class="toggle-handle"></div>
+            </div>
+        </li>
+        <li class="table-view-cell">
+            SMS/Message
+            <p></p>
+            <div class="toggle active">
+              <div class="toggle-handle"></div>
+            </div>
+        </li>
+        <li class="table-view-cell">
+            Storage/Media
+            <p></p>
+            <div class="toggle active">
+              <div class="toggle-handle"></div>
+            </div>
+        </li>
+
+      </ul>
+
+      <button class="btn btn-link btn-nav pull-right">
+  Next
+    <span class="icon icon-right-nav"></span>
+  </button>
+    </div><!-- /.content -->
+  </body>
+</html>

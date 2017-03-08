@@ -1,0 +1,27 @@
+CREATE TABLE `appgen`.`application store` (
+  `id_ApplicationStore` INT NOT NULL AUTO_INCREMENT,
+  `name_ApplicationStore` VARCHAR(45) NULL,
+  PRIMARY KEY (`id_ApplicationStore`))
+COMMENT = 'Table of application store names and IDs.';
+
+
+CREATE TABLE `appgen`.`application list` (
+  `id_application` INT NOT NULL AUTO_INCREMENT,
+  `name_application` VARCHAR(45) NULL,
+  `name_applicationStore` VARCHAR(45) NULL,
+  `userReviews_application` BLOB NULL,
+  `rating_application` DECIMAL(2,1) NULL,
+  `downloadCount_application` CHAR(1) NULL,
+  `verifiedDeveloper_application` BLOB NULL,
+  `paidApp_application` BLOB NULL,
+  `camera_permission` BLOB NULL,
+  `contacts_permission` BLOB NULL,
+  `microphone_permission` BLOB NULL,
+  `location_permission` BLOB NULL,
+  `fitness_permission` BLOB NULL,
+  `calendar_permission` BLOB NULL,
+  `sms_permission` BLOB NULL,
+  `storage_permission` BLOB NULL,
+  `ranking_application` INT NULL,
+  PRIMARY KEY (`id_application`))
+COMMENT = 'Application Attributes';

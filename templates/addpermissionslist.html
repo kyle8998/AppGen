@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AppGen</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/ratchet.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/ratchet-theme-ios.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/app.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <script src="{{ url_for('static',filename='js/ratchet.min.js') }}"></script>
+
+
+    <!-- Progress Bar Animation -->
+    <style>
+    @keyframes width {
+           0%, 100% {
+           transition-timing-function: cubic-bezier(1, 0, 0.65, 0.85);
+      }
+      0% {
+           width: 50%;
+      }
+       100% {
+          width: 60%;
+      }
+    }
+    </style>
+
+
+  </head>
+  <body>
+
+    <header class="bar bar-nav">
+        <a href="home.html" data-transition="slide-out">
+  <button class="btn btn-link btn-nav pull-left" onClick="location='/home/'">
+    <span class="icon icon-left-nav"></span>
+    Back
+
+  </button>
+    </a>
+  <h1 class="title">AppGen</h1>
+
+      <!-- Progress Bar -->
+            <div class="containerlower">
+              <div class="progress">
+                <div class="progress-bar">
+
+                </div>
+              </div>
+            </div>
+</header>
+
+    <div class="content">
+
+      <br>
+      <p>Add Permissions</p>
+
+      <ul class="table-view">
+        <li class="table-view-cell" onClick="location='/addpermissions/'">
+          <a class="navigate-right" href="/addpermissions/">
+            Application 1
+            <p></p>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a class="navigate-right" href="#">
+            Application 2
+            <p></p>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a class="navigate-right" href="#">
+            Application 3
+            <p></p>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a class="navigate-right" href="#">
+            Application 4
+            <p></p>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a class="navigate-right" href="#">
+            Application 5
+            <p></p>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a class="navigate-right" href="#">
+            Application 6
+            <p></p>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a class="navigate-right" href="#">
+            Application 7
+            <p></p>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a class="navigate-right" href="#">
+            Application 8
+            <p></p>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a class="navigate-right" href="#">
+            Application 9
+            <p></p>
+          </a>
+        </li>
+        <li class="table-view-cell">
+          <a class="navigate-right" href="#">
+            Application 10
+            <p></p>
+          </a>
+        </li>
+      </ul>
+    </div><!-- /.content -->
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AppGen</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/ratchet.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/ratchet-theme-ios.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/app.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <script src="{{ url_for('static',filename='js/ratchet.min.js') }}"></script>
+
+
+    <!-- Progress Bar Animation -->
+    <style>
+    @keyframes width {
+           0%, 100% {
+           transition-timing-function: cubic-bezier(1, 0, 0.65, 0.85);
+      }
+      0% {
+           width: 10%;
+      }
+       100% {
+          width: 20%;
+      }
+    }
+    </style>
+
+
+  </head>
+  <body>
+
+    <header class="bar bar-nav">
+        <a href="/"  data-transition="slide-out">
+  <button class="btn btn-link btn-nav pull-left" onClick="location='/'">
+    <span class="icon icon-left-nav"></span>
+    Back
+
+  </button>
+    </a>
+  <h1 class="title">{{name}}</h1>
+
+      <!-- Progress Bar -->
+            <div class="containerlower">
+              <div class="progress">
+                <div class="progress-bar">
+                </div>
+              </div>
+            </div>
+
+
+    </header>
+
+
+
+    <div class="bar bar-footer">
+
+      <!--<a class="icon icon-compose pull-right" href="#composeModal"></a>-->
+      <small class="updated-text">{{name}}</small>
+    </div>
+
+    <div class="content">
+
+
+
+
+      <ul class="table-view">
+        <li class="table-view-cell media">
+          <a class="navigate-right" id=link href="/createapp/" data-transition="slide-in">
+            <span class="media-object icon icon-pages pull-left"></span>
+            <div class="media-body" onClick="location='/createapp/'">
+              Create Application
+            </div>
+          </a>
+        </li>
+        <li class="table-view-cell media">
+          <a class="navigate-right" href="/applist/" data-transition="slide-in">
+            <!-- <span class="media-object icon icon-person pull-left"></span> -->
+            <div class="media-body" onClick="location='/applist/'">
+              Edit Application
+            </div>
+          </a>
+        </li>
+        <li class="table-view-cell media">
+          <a class="navigate-right" href="/addpermissionslist/" data-transition="slide-in">
+            <!-- <span class="media-object icon icon-star-filled pull-left"></span> -->
+            <div class="media-body" onClick="location='/addpermissionslist/'">
+              Add Permissions
+            </div>
+          </a>
+        </li>
+        <li class="table-view-cell media">
+          <a class="navigate-right" href="/applist/" data-transition="slide-in">
+            <!-- <span class="media-object icon icon-trash pull-left"></span> -->
+            <div class="media-body" onClick="location='/applist/'">
+              Arrange AppStore
+            </div>
+          </a>
+        </li>
+      </ul>
+
+
+  </body>
+</html>
