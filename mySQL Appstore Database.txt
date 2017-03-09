@@ -1,0 +1,39 @@
+CREATE SCHEMA `db_appstore` ;
+
+CREATE TABLE `db_appstore`.`appstore_list` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(80) NULL,
+  PRIMARY KEY (`id`))
+COMMENT = 'Table for application store id and name.';
+
+CREATE TABLE `db_appstore`.`app_list` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `appstore_id` INT NOT NULL,
+  `app_name` VARCHAR(45) NULL,
+  `app_reviews` VARCHAR(10) NULL,
+  `app_rating` DECIMAL(2,1) NULL,
+  `app_download` VARCHAR(45) NULL,
+  `app_verified` VARCHAR(10) NULL,
+  `app_paid` VARCHAR(10) NULL,
+  `app_camera1` VARCHAR(10) NULL,
+  `app_contacts1` VARCHAR(10) NULL,
+  `app_microphone1` VARCHAR(10) NULL,
+  `app_location1` VARCHAR(10) NULL,
+  `app_fitness1` VARCHAR(10) NULL,
+  `app_calendar1` VARCHAR(10) NULL,
+  `app_messages1` VARCHAR(10) NULL,
+  `app_storage1` VARCHAR(10) NULL,
+  `app_camera2` VARCHAR(10) NULL,
+  `app_contacts2` VARCHAR(10) NULL,
+  `app_microphone2` VARCHAR(10) NULL,
+  `app_location2` VARCHAR(10) NULL,
+  `app_fitness2` VARCHAR(10) NULL,
+  `app_calendar2` VARCHAR(10) NULL,
+  `app_message2` VARCHAR(10) NULL,
+  `app_storage2` VARCHAR(10) NULL,
+  `app_rank1` INT NULL,
+  `app_rank2` INT NULL,
+  PRIMARY KEY (`id`))
+COMMENT = 'Table for application attributes.';
+
+
