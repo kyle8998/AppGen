@@ -34,43 +34,43 @@
       rating: 0.0
     });
 
-    $('#getAppName').val($('#sendAppName').text());
 
     $('#sendReview').click(function(){
-      if ($(this).data('count')) {
-        $(this).data('count', false);
+      // if ({{reviews}}.localeCompare('true')){
+        if ($(this).data('count') == {{reviewOpp}}) {
+          $(this).data('count', {{review}});
 
-      }
-      else { // first click
-        $(this).data('count', true); // initialize the count
-      }
-      $('#getReview').val($(this).data('count'));
+        }
+        else { // first click
+          $(this).data('count', {{reviewOpp}}); // initialize the count
+        }
+        $('#getReview').val($(this).data('count'));
     });
 
     $('#sendDeveloper').click(function(){
-      if ($(this).data('count')) {
-        $(this).data('count', false);
+      if ($(this).data('count') == {{developerOpp}}) {
+        $(this).data('count', {{developer}});
 
       }
       else { // first click
-        $(this).data('count', true); // initialize the count
+        $(this).data('count', {{developerOpp}}); // initialize the count
       }
       $('#getDeveloper').val($(this).data('count'));
     });
 
     $('#sendPaid').click(function(){
-      if ($(this).data('count')) {
-        $(this).data('count', false);
+      if ($(this).data('count') == {{paidOpp}}) {
+        $(this).data('count', {{paid}});
 
       }
       else { // first click
-        $(this).data('count', true); // initialize the count
+        $(this).data('count', {{paidOpp}}); // initialize the count
       }
       $('#getPaid').val($(this).data('count'));
     });
 
-
-
+    //JQuery setting to get the download count that was set before.
+    $("select option[value='{{download}}']").attr("selected","selected");
 
 
 
@@ -126,17 +126,17 @@
 </header>
 
 <div class="content">
-  <form method="POST" action="/applist/">
+  <form action="/applist/">
     <br>
 
-    <p id="sendAppName">{{appname}}</p>
+    <p>Application 1 - Edit</p>
 
     <ul class="table-view">
       <li class="table-view-cell">
 
         User Reviews
 
-        <div id="sendReview" class="toggle">
+        <div id="sendReview" class="toggle {{setReview}}">
           <div class="toggle-handle"></div>
         </div>
 
@@ -169,8 +169,8 @@
     </div>
   </div> -->
   <div class="select">
-    <select name="downloadCount" style="float: right; margin-right: -40px; width: 140px;">
-      <option value="Select a value" selected hidden>Select a value</option>
+    <select name="downloadCount" style="float: right; margin-right: -40px; width: 140px;" placeholder: "sd">
+      <option value="Select a value" hidden>Select a value</option>
       <option value="1-100">1-100</option>
       <option value="101-1,000">101-1,000</option>
       <option value="1,001-10,000">1,001-10,000</option>
@@ -188,7 +188,7 @@
   Verified Developer
 
 
-  <div id="sendDeveloper" class="toggle">
+  <div id="sendDeveloper" class="toggle {{setDeveloper}}">
     <div class="toggle-handle"></div>
   </div>
 
@@ -198,7 +198,7 @@
   Paid Application
 
 
-  <div id="sendPaid" class="toggle">
+  <div id="sendPaid" class="toggle {{setPaid}}">
     <div class="toggle-handle"></div>
   </div>
 
@@ -211,10 +211,9 @@
 
 </div>
 
-<input type="text" id="getReview" name="reviews" value="false">
-<input type="text" id="getDeveloper" name="verifiedDeveloper" value="false" style="visibility: hidden">
-<input type="text" id="getPaid" name="paid" value="false" style="visibility: hidden">
-<input type="text" id="getAppName" name="appName" value="default">
+<input type="text" id="getReview" name="reviews" value="{{review}}">
+<input type="text" id="getDeveloper" name="verifiedDeveloper" value="{{developer}}">
+<input type="text" id="getPaid" name="paid" value="{{paid}}">
 
 
 
