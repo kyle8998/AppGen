@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
     <script src="{{ url_for('static',filename='js/ratchet.min.js') }}"></script>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <!-- Progress Bar Animation -->
     <style>
@@ -29,6 +30,21 @@
       }
     }
     </style>
+
+    <script>
+    $(document).ready(function () {
+
+    $('#test').val($('work'));
+
+    if ({{num_apps}} > 0) {
+        $("#edit").show();
+    }
+    if ({{num_apps}} == 10) {
+        $("#permission").show();
+    }
+
+  });
+    </script>
 
 
   </head>
@@ -66,26 +82,28 @@
     <div class="content">
 
 
-
-
+<form method="POST" action="/createapp/">
+<br>
       <ul class="table-view">
         <li class="table-view-cell media">
           <a class="navigate-right" id=link href="/createapp/" data-transition="slide-in">
             <span class="media-object icon icon-pages pull-left"></span>
             <div class="media-body" onClick="location='/createapp/'">
               Create Application
+              <!-- <input type="submit" idname="submit" class="submit" value="Create Application"> -->
             </div>
           </a>
         </li>
-        <li class="table-view-cell media">
+        <li class="table-view-cell media" id="edit" style="display:none">
           <a class="navigate-right" href="/applist/" data-transition="slide-in">
+
             <!-- <span class="media-object icon icon-person pull-left"></span> -->
             <div class="media-body" onClick="location='/applist/'">
               Edit Application
             </div>
           </a>
         </li>
-        <li class="table-view-cell media">
+        <li class="table-view-cell media" id="permission" style="display:none">
           <a class="navigate-right" href="/addpermissionslist/" data-transition="slide-in">
             <!-- <span class="media-object icon icon-star-filled pull-left"></span> -->
             <div class="media-body" onClick="location='/addpermissionslist/'">
@@ -102,6 +120,9 @@
           </a>
         </li>
       </ul>
+
+<input type="text" id="test" name="name" value="{{name}}">
+</form>
 
 
   </body>

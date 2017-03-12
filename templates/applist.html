@@ -14,6 +14,45 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
     <script src="{{ url_for('static',filename='js/ratchet.min.js') }}"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+
+    $('#test').val($('work'));
+
+
+    if ({{num_apps}} > 1) {
+        $("#app2").show();
+    }
+    if ({{num_apps}} > 2) {
+        $("#app3").show();
+    }
+    if ({{num_apps}} > 3) {
+        $("#app4").show();
+    }
+    if ({{num_apps}} > 4){
+        $("#app5").show();
+    }
+    if ({{num_apps}} > 5) {
+        $("#app6").show();
+    }
+    if ({{num_apps}} > 6) {
+        $("#app7").show();
+    }
+    if ({{num_apps}} > 7) {
+        $("#app8").show();
+    }
+    if ({{num_apps}} > 8) {
+        $("#app9").show();
+    }
+    if ({{num_apps}} > 9) {
+        $("#app10").show();
+    }
+
+  });
+</script>
+
+
     <style>
     @keyframes width {
            0%, 100% {
@@ -32,14 +71,14 @@
   </head>
   <body>
     <header class="bar bar-nav">
-        <a href="home.html" data-transition="slide-out">
-  <button class="btn btn-link btn-nav pull-left" onClick="location='/home/'">
+        <a href="/homeFromCreate" data-transition="slide-out">
+  <button class="btn btn-link btn-nav pull-left" onClick="location='/homeFromCreate/'">
     <span class="icon icon-left-nav"></span>
     Back
 
   </button>
     </a>
-  <h1 class="title">{{name}}</h1>
+  <h1 class="title">Edit an Application</h1>
 
 
       <!-- Progress Bar -->
@@ -55,68 +94,81 @@
 
     <div class="content">
 
+<br>
+<p>Select an application</p>
       <ul class="table-view">
-        <li class="table-view-cell" onClick="location='/editapp/'">
+        <li class="table-view-cell" id="app1" onClick="location='/editapp/'">
           <a class="navigate-right" href="/editapp/">
             Application 1
-            <p>{{download}}</p>
+            <p></p>
           </a>
         </li>
-        <li class="table-view-cell">
+        <li class="table-view-cell" id="app2" style="display:none">
           <a class="navigate-right" href="#">
             Application 2
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell">
+        <li class="table-view-cell" id="app3" style="display:none">
           <a class="navigate-right" href="#">
             Application 3
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell">
+        <li class="table-view-cell" id="app4" style="display:none">
           <a class="navigate-right" href="#">
             Application 4
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell">
+        <li class="table-view-cell" id="app5" style="display:none">
           <a class="navigate-right" href="#">
             Application 5
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell">
+        <li class="table-view-cell" id="app6" style="display:none">
           <a class="navigate-right" href="#">
             Application 6
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell">
+        <li class="table-view-cell" id="app7" style="display:none">
           <a class="navigate-right" href="#">
             Application 7
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell">
+        <li class="table-view-cell" id="app8" style="display:none">
           <a class="navigate-right" href="#">
             Application 8
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell">
+        <li class="table-view-cell" id="app9" style="display:none">
           <a class="navigate-right" href="#">
             Application 9
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell">
+        <li class="table-view-cell" id="app10" style="display:none">
           <a class="navigate-right" href="#">
             Application 10
             <p></p>
           </a>
         </li>
       </ul>
+
+<input type="text" value={{num_apps}}>
+
+<form method="POST" action="/createapp/">
+<div class="center">
+  <input type="submit" idname="submit" class="submit" value="Create Application">
+<input type="submit" name='test' id="test" class="submit" value="a">
+</div>
+</form>
+
+
     </div><!-- /.content -->
   </body>
 </html>

@@ -4,7 +4,7 @@ Created on Feb 16, 2017
 @author: Kyle
 '''
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 from flaskext.mysql import MySQL
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_sqlalchemy import SQLAlchemy
@@ -31,6 +31,8 @@ app.config['MYSQL_DATABASE_DB'] = 'db_appstore'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
 
+
+
 @app.route('/')
 def main():
     return render_template("index.html")
@@ -46,40 +48,92 @@ def home():
         name = request.form['storename']
         #query to db
 
-        # cursor = mysql.connect().cursor()
-        # cursor = mysql.get_db().cursor()
-        # # not working ->query = "INSERT INTO testme (id,name) VALUES ('7','9')"
-        # query = "INSERT INTO potlala (id, name, email) VALUES ('2222', 'Maria',  'mariaz@activestate.com')"
-        # cursor.execute(query)
-
         conn = mysql.connect()
         cursor = conn.cursor()
         cursor.execute("INSERT INTO appstore_list (name) VALUES (%s)",(name))
 
-        # me = 'testy'
-        # db.session.add(me)
-
         conn.commit()
-
-
         return render_template("home.html", name=name)
+
+    # elif request.method == 'POSTCREATE':
+    #     appName = request.form['appName']
+    #     userReviews = request.form['reviews']
+    #     downloadCount = request.form['downloadCount']
+    #     verifiedDeveloper = request.form['verifiedDeveloper']
+    #     paidApp = request.form['paid']
+    #     rating = 3.5
+    #     print ("asdadadas")
+    #     cursor.execute("INSERT INTO app_list (appstore_id, app_name, app_reviews, app_rating, app_download, app_verified, app_paid) VALUES (%s, %s, %s, %s, %s, %s, %s)",(appstore_id, appName, userReviews, rating, downloadCount, verifiedDeveloper, paidApp))
+    #     conn.commit()
+    #
+    #     num_apps=cursor.execute("SELECT appstore_id FROM app_list WHERE appstore_id=%s",(appstore_id))
+    #
+    #     return render_template("applist.html", name=appstore_name, appstore_id=appstore_id, download=download, num_apps=num_apps)
+
     elif request.method == 'GET':
         conn = mysql.connect()
         cursor = conn.cursor()
         cursor.execute("SELECT name FROM appstore_list ORDER BY id DESC LIMIT 1")
         name=cursor.fetchone()[0]
+
         return render_template("home.html", name=name)
 
+@app.route('/homeFromCreate/', methods = ['POST'])
+def homeFromCreate():
+    if request.method == 'POST':
+        appName = request.form['appName']
+        userReviews = request.form['reviews']
+        downloadCount = request.form['downloadCount']
+        verifiedDeveloper = request.form['verifiedDeveloper']
+        paidApp = request.form['paid']
+        rating = 3.5
+
+        conn = mysql.connect()
+        cursor = conn.cursor()
+
+        #This gets the appStore name which displays at the top
+        cursor.execute("SELECT name FROM appstore_list ORDER BY id DESC LIMIT 1")
+        appstore_name=cursor.fetchone()[0]
+        #This gets the appStore ID which is hidden
+        cursor.execute("SELECT id FROM appstore_list ORDER BY id DESC LIMIT 1")
+        appstore_id=cursor.fetchone()[0]
+        #This gets the download count
+        cursor.execute("SELECT app_download FROM app_list ORDER BY id DESC LIMIT 1")
+        download=cursor.fetchone()[0]
+        #Number of apps
+        num_apps=cursor.execute("SELECT appstore_id FROM app_list WHERE appstore_id=%s",(appstore_id))
+
+        cursor.execute("INSERT INTO app_list (appstore_id, app_name, app_reviews, app_rating, app_download, app_verified, app_paid) VALUES (%s, %s, %s, %s, %s, %s, %s)",(appstore_id, appName, userReviews, rating, downloadCount, verifiedDeveloper, paidApp))
+        conn.commit()
+
+        num_apps=cursor.execute("SELECT appstore_id FROM app_list WHERE appstore_id=%s",(appstore_id))
+
+    return render_template("home.html", name=appstore_name, appstore_id=appstore_id, download=download, num_apps=num_apps)
 
 
-@app.route('/createapp/')
+
+@app.route('/createapp/', methods = ['POST', 'GET'])
 def createapp():
     conn = mysql.connect()
     cursor = conn.cursor()
     cursor.execute("SELECT name FROM appstore_list ORDER BY id DESC LIMIT 1")
     name=cursor.fetchone()[0]
+
+    # name = request.form['name']
+
+
     appname = 'Application 1'
-    return render_template("createapp.html", name=name, appname=appname)
+
+
+    #This gets the appStore ID which is hidden
+    cursor.execute("SELECT id FROM appstore_list ORDER BY id DESC LIMIT 1")
+    appstore_id=cursor.fetchone()[0]
+    #Number of apps
+    num_apps=cursor.execute("SELECT appstore_id FROM app_list WHERE appstore_id=%s",(appstore_id))
+
+
+
+    return render_template("createapp.html", name=name, appname=appname, num_apps=num_apps)
 
 @app.route('/applist/', methods = ['POST', 'GET'])
 def applist():
@@ -106,7 +160,10 @@ def applist():
     cursor.execute("SELECT app_download FROM app_list ORDER BY id DESC LIMIT 1")
     download=cursor.fetchone()[0]
 
-    return render_template("applist.html", name=appstore_name, appstore_id=appstore_id, download=download)
+    #Number of apps
+    num_apps=cursor.execute("SELECT appstore_id FROM app_list WHERE appstore_id=%s",(appstore_id))
+
+    return render_template("applist.html", name=appstore_name, appstore_id=appstore_id, download=download, num_apps=num_apps)
 
 @app.route('/editapp/')
 def editapp():
