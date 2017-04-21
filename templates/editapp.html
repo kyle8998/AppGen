@@ -115,7 +115,7 @@
     <!-- Progress Bar -->
     <div class="containerlower">
       <div class="progress">
-        <div class="progress-bar">
+        <div class="butts-bar">
 
         </div>
       </div>
@@ -126,7 +126,7 @@
 </header>
 
 <div class="content">
-  <form action="/applist/">
+  <form method="POST" action="/applistFromEdit/">
     <br>
 
     <p>Application 1 - Edit</p>
@@ -207,13 +207,14 @@
 
 <br>
 <div class="center">
-  <input type="submit" idname="submit" class="submit" value="Next">
+  <input type="submit" idname="submit" class="submit" value="Apply Changes">
 
 </div>
 
 <input type="text" id="getReview" name="reviews" value="{{review}}">
 <input type="text" id="getDeveloper" name="verifiedDeveloper" value="{{developer}}">
 <input type="text" id="getPaid" name="paid" value="{{paid}}">
+<input type="text" id="getAppName" name="appName" value="{{app_name}}">
 
 
 

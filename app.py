@@ -165,43 +165,87 @@ def applist():
 
     return render_template("applist.html", name=appstore_name, appstore_id=appstore_id, download=download, num_apps=num_apps)
 
-@app.route('/editapp/')
-def editapp():
+@app.route('/applistFromEdit/', methods = ['POST', 'GET'])
+def applistFromEdit():
     conn = mysql.connect()
     cursor = conn.cursor()
+    #This gets the appStore name which displays at the top
     cursor.execute("SELECT name FROM appstore_list ORDER BY id DESC LIMIT 1")
-    name=cursor.fetchone()[0]
+    appstore_name=cursor.fetchone()[0]
+    #This gets the appStore ID which is hidden
+    cursor.execute("SELECT id FROM appstore_list ORDER BY id DESC LIMIT 1")
+    appstore_id=cursor.fetchone()[0]
 
-    cursor.execute("SELECT app_reviews FROM app_list ORDER BY id DESC LIMIT 1")
-    review=cursor.fetchone()[0]
-    cursor.execute("SELECT app_download FROM app_list ORDER BY id DESC LIMIT 1")
-    download=cursor.fetchone()[0]
-    cursor.execute("SELECT app_verified FROM app_list ORDER BY id DESC LIMIT 1")
-    developer=cursor.fetchone()[0]
-    cursor.execute("SELECT app_paid FROM app_list ORDER BY id DESC LIMIT 1")
-    paid=cursor.fetchone()[0]
 
-    if review=='true':
-        setReview='active'
-        reviewOpp='false'
-    else:
-        setReview=''
-        reviewOpp='true'
+    app_name = request.form['appName']
+    userReviews = request.form['reviews']
+    downloadCount = request.form['downloadCount']
+    verifiedDeveloper = request.form['verifiedDeveloper']
+    paidApp = request.form['paid']
+    rating = 3.5
+    print(app_name)
+    print(appstore_id)
+    cursor.execute("UPDATE app_list SET app_reviews=%s, app_rating=%s, app_download=%s, app_verified=%s, app_paid=%s WHERE appstore_id=%s AND app_name=%s",(userReviews, rating, downloadCount, verifiedDeveloper, paidApp, appstore_id, app_name))
+    conn.commit()
+    num_apps = cursor.execute("SELECT appstore_id FROM app_list WHERE appstore_id=%s",(appstore_id))
 
-    if developer=='true':
-        setDeveloper='active'
-        developerOpp='false'
-    else:
-        setDeveloper=''
-        developerOpp='true'
-    if paid=='true':
-        setPaid='active'
-        paidOpp='false'
-    else:
-        setPaid=''
-        paidOpp='true'
 
-    return render_template("editapp.html", name=name, setReview=setReview, review=review, reviewOpp=reviewOpp, download=download, setDeveloper=setDeveloper, developer=developer, developerOpp=developerOpp, setPaid=setPaid, paid=paid, paidOpp=paidOpp)
+
+    #Number of apps
+    num_apps=cursor.execute("SELECT appstore_id FROM app_list WHERE appstore_id=%s",(appstore_id))
+
+    return render_template("applist.html", name=appstore_name, appstore_id=appstore_id, num_apps=num_apps)
+
+
+
+@app.route('/editapp/', methods = ['POST', 'GET'])
+def editapp():
+    if request.method == 'POST':
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        cursor.execute("SELECT name FROM appstore_list ORDER BY id DESC LIMIT 1")
+        name=cursor.fetchone()[0]
+
+        #This gets the appStore name which displays at the top
+        cursor.execute("SELECT name FROM appstore_list ORDER BY id DESC LIMIT 1")
+        appstore_name=cursor.fetchone()[0]
+        #This gets the appStore ID which is hidden
+        cursor.execute("SELECT id FROM appstore_list ORDER BY id DESC LIMIT 1")
+        appstore_id=cursor.fetchone()[0]
+        #Gets the app name
+        app_name = request.form['app_name']
+
+
+        cursor.execute("SELECT app_reviews FROM app_list WHERE appstore_id=%s AND app_name=%s",(appstore_id, app_name))
+        review=cursor.fetchone()[0]
+        cursor.execute("SELECT app_download FROM app_list WHERE appstore_id=%s AND app_name=%s",(appstore_id, app_name))
+        download=cursor.fetchone()[0]
+        cursor.execute("SELECT app_verified FROM app_list WHERE appstore_id=%s AND app_name=%s",(appstore_id, app_name))
+        developer=cursor.fetchone()[0]
+        cursor.execute("SELECT app_paid FROM app_list WHERE appstore_id=%s AND app_name=%s",(appstore_id, app_name))
+        paid=cursor.fetchone()[0]
+
+        if review=='true':
+            setReview='active'
+            reviewOpp='false'
+        else:
+            setReview=''
+            reviewOpp='true'
+
+        if developer=='true':
+            setDeveloper='active'
+            developerOpp='false'
+        else:
+            setDeveloper=''
+            developerOpp='true'
+        if paid=='true':
+            setPaid='active'
+            paidOpp='false'
+        else:
+            setPaid=''
+            paidOpp='true'
+
+    return render_template("editapp.html", name=name, app_name=app_name, setReview=setReview, review=review, reviewOpp=reviewOpp, download=download, setDeveloper=setDeveloper, developer=developer, developerOpp=developerOpp, setPaid=setPaid, paid=paid, paidOpp=paidOpp)
 
 @app.route('/addpermissionslist/')
 def addpermissionslist():

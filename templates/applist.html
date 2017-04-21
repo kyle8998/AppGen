@@ -49,6 +49,39 @@
         $("#app10").show();
     }
 
+
+    // $('#app1').click(function(){
+    //     $('#app_name').val('App 1');
+    // });
+    // $('#app2').click(function(){
+    //     $('#app_name').val('App 2');
+    // });
+    // $('#app3').click(function(){
+    //     $('#app_name').val('App 3');
+    // });
+    // $('#app4').click(function(){
+    //     $('#app_name').val('App 4');
+    // });
+    // $('#app5').click(function(){
+    //     $('#app_name').val('App 5');
+    // });
+    // $('#app6').click(function(){
+    //     $('#app_name').val('App 6');
+    // });
+    // $('#app7').click(function(){
+    //     $('#app_name').val('App 7');
+    // });
+    // $('#app8').click(function(){
+    //     $('#app_name').val('App 8');
+    // });
+    // $('#app9').click(function(){
+    //     $('#app_name').val('App 9');
+    // });
+    // $('#app10').click(function(){
+    //     $('#app_name').val('App 9');
+    // });
+
+
   });
 </script>
 
@@ -72,7 +105,7 @@
   <body>
     <header class="bar bar-nav">
         <a href="/homeFromCreate" data-transition="slide-out">
-  <button class="btn btn-link btn-nav pull-left" onClick="location='/homeFromCreate/'">
+  <button class="btn btn-link btn-nav pull-left" onClick="location='/home/'">
     <span class="icon icon-left-nav"></span>
     Back
 
@@ -96,70 +129,80 @@
 
 <br>
 <p>Select an application</p>
+
+<form id="test" method="POST" action="/editapp/">
       <ul class="table-view">
-        <li class="table-view-cell" id="app1" onClick="location='/editapp/'">
+        <li class="table-view-cell" id="app1" onclick="document.getElementById('test').submit();">
           <a class="navigate-right" href="/editapp/">
             Application 1
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell" id="app2" style="display:none">
-          <a class="navigate-right" href="#">
+        <input type="text" id="app_name" name="app_name" value="app 1">
+
+      </form>
+      <form id="test2" method="POST" action="/editapp/">
+        <li class="table-view-cell" id="app2" onClick="document.getElementById('test2').submit();" style="display:none">
+          <a class="navigate-right" href="/editapp/">
             Application 2
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell" id="app3" style="display:none">
-          <a class="navigate-right" href="#">
+        <input type="text" id="app_name" name="app_name" value="app 2">
+
+      </form>
+        <li class="table-view-cell" id="app3" onClick="location='/editapp/'" style="display:none">
+          <a class="navigate-right" href="/editapp/">
             Application 3
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell" id="app4" style="display:none">
-          <a class="navigate-right" href="#">
+        <li class="table-view-cell" id="app4" onClick="location='/editapp/'" style="display:none">
+          <a class="navigate-right" href="/editapp/">
             Application 4
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell" id="app5" style="display:none">
-          <a class="navigate-right" href="#">
+        <li class="table-view-cell" id="app5" onClick="location='/editapp/'" style="display:none">
+          <a class="navigate-right" href="#/editapp/">
             Application 5
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell" id="app6" style="display:none">
+        <li class="table-view-cell" id="app6" onClick="location='/editapp/'" style="display:none">
           <a class="navigate-right" href="#">
             Application 6
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell" id="app7" style="display:none">
+        <li class="table-view-cell" id="app7" onClick="location='/editapp/'" style="display:none">
           <a class="navigate-right" href="#">
             Application 7
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell" id="app8" style="display:none">
+        <li class="table-view-cell" id="app8" onClick="location='/editapp/'" style="display:none">
           <a class="navigate-right" href="#">
             Application 8
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell" id="app9" style="display:none">
+        <li class="table-view-cell" id="app9" onClick="location='/editapp/'" style="display:none">
           <a class="navigate-right" href="#">
             Application 9
             <p></p>
           </a>
         </li>
-        <li class="table-view-cell" id="app10" style="display:none">
+        <li class="table-view-cell" id="app10" onClick="location='/editapp/'" style="display:none">
           <a class="navigate-right" href="#">
             Application 10
             <p></p>
           </a>
         </li>
       </ul>
-
+<input type="text" id="app_name" name="app_name" value="app 1">
 <input type="text" value={{num_apps}}>
+</form>
 
 <form method="POST" action="/createapp/">
 <div class="center">
