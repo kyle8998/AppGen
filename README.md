@@ -1,7 +1,10 @@
 # AppGen
+
 Created by Kyle Lim and Erik Ochoa
 
 This may not be the fully updated version.
+
+![Screenshot](https://raw.githubusercontent.com/kyle8998/AppGen/master/img/screenshot.PNG)
 
 ---
 
